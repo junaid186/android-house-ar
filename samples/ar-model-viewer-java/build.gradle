@@ -1,0 +1,34 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "com.house.ar" // "com.google.ar.sceneform.samples.gltf"
+
+        // Sceneform requires minSdkVersion >= 24.
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    aaptOptions {
+        noCompress 'filamat', 'ktx'
+    }
+}
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "androidx.fragment:fragment:$fragment_version"
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    releaseImplementation "com.gorisse.thomas.sceneform:sceneform:1.20.4"
+    debugApi project(":sceneform")
+}
